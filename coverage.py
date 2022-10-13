@@ -1,18 +1,18 @@
-from math import sqrt
+from math import sqrt, floor
 from colorama import Fore, Style
 
-from utils import parse_args
+from utils import parse_args, render_image
 
 
 def main():
-    width, length, P, Pmin = parse_args()
+    width, length, P, Pmin, image_flag = parse_args()
 
     if width == 0 or length == 0:
         print('0 STATION(S) ARE NEEDED TO COVER THIS AREA')
         return
 
-    r_outer = int(sqrt(P / Pmin))
-    r_inner = int(sqrt(0.75 * (r_outer ** 2)))
+    r_outer = floor(sqrt(P / Pmin))  # Round down
+    r_inner = round(sqrt(0.75 * (r_outer ** 2)))  # Round to the nearest
 
     print(f'Radius of the base station at which Pt >= Pmin: {Fore.RED}{r_outer}{Style.RESET_ALL}')
     print(f'Inner circle radius of the hexagon inscribed in coverage circle: {Fore.RED}{r_inner}{Style.RESET_ALL}')
@@ -54,11 +54,13 @@ def main():
 
     print(f'Number of rows: {Fore.RED}{row_num}{Style.RESET_ALL}')
 
-    # FINAL CALCULATION
+    # FINAL CALCULATION && IMAGE CREATION
 
     optimal_station_num = (stations_in_odd_row + stations_in_even_row) * int(row_num / 2)
     if row_num % 2 != 0:
         optimal_station_num += stations_in_odd_row
+
+    render_image(width, length, r_outer, r_inner, stations_in_odd_row, stations_in_even_row, row_num)
 
     print('-------------------------------------------------')
     print(f'{Fore.RED}{optimal_station_num}{Style.RESET_ALL} STATION(S) ARE NEEDED TO COVER THIS AREA')
