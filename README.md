@@ -17,6 +17,5 @@ options:
                         Stations power
   -pmin POWER_MIN, --power_min POWER_MIN
                         Stations minimal power acceptable for users
-  -i, --image           Show an image with optimal location of 
-                        base stations in the area
+  -i, --image           Show an image with optimal location of base stations in the area
 ```
