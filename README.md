@@ -7,8 +7,6 @@ by base stations with specified power.
 `python3 coverage.py -w WIDTH -l LENGTH -p POWER -pmin POWER_MIN`
 
 ```
-Usage: coverage.py -w WIDTH -l LENGTH -p POWER -pmin POWER_MIN [-i] [-h]
-
 Options:
   -w WIDTH, --width WIDTH
                         Width of the area to cover.
