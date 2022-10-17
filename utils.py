@@ -26,7 +26,7 @@ def parse_args() -> tuple[int, int, float, float, bool]:
     parser.add_argument('-pmin', '--power_min', help='Stations minimal power acceptable for users.',
                         required=True, type=float)
     parser.add_argument('-i', '--image', help='Show an image with optimal location of base stations in the area.',
-                        required=False, action="store_false")
+                        required=False, action="store_true")
     parser.add_argument('-h', '--help', help='Show this help message and exit.', default=argparse.SUPPRESS,
                         action='help')
 
