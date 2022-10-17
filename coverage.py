@@ -60,7 +60,8 @@ def main():
     if row_num % 2 != 0:
         optimal_station_num += stations_in_odd_row
 
-    render_image(width, length, r_outer, r_inner, stations_in_odd_row, stations_in_even_row, row_num)
+    if image_flag is True:
+        render_image(width, length, r_outer, r_inner, stations_in_odd_row, stations_in_even_row, row_num)
 
     print('-------------------------------------------------')
     print(f'{Fore.RED}{optimal_station_num}{Style.RESET_ALL} STATION(S) ARE NEEDED TO COVER THIS AREA')
