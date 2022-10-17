@@ -8,16 +8,27 @@ DARK_GREEN = (17, 91, 39)
 BLACK = (0, 0, 0)
 
 
-def parse_args() -> tuple[int, int, float, float, bool]:
-    parser = argparse.ArgumentParser()
+class CapitalisedHelpFormatter(argparse.HelpFormatter):
+    def add_usage(self, usage, actions, groups, prefix=None):
+        if prefix is None:
+            prefix = 'Usage: '
+        return super(CapitalisedHelpFormatter, self).add_usage(
+            usage, actions, groups, prefix)
 
-    parser.add_argument('-w', '--width', help='Width of the area to cover', required=True, type=int)
-    parser.add_argument('-l', '--length', help='Length of the area to cover', required=True, type=int)
-    parser.add_argument('-p', '--power', help='Stations power', required=True, type=float)
-    parser.add_argument('-pmin', '--power_min', help='Stations minimal power acceptable for users',
+
+def parse_args() -> tuple[int, int, float, float, bool]:
+    parser = argparse.ArgumentParser(add_help=False, formatter_class=CapitalisedHelpFormatter)
+    parser._optionals.title = 'Options'
+
+    parser.add_argument('-w', '--width', help='Width of the area to cover.', required=True, type=int)
+    parser.add_argument('-l', '--length', help='Length of the area to cover.', required=True, type=int)
+    parser.add_argument('-p', '--power', help='Stations power.', required=True, type=float)
+    parser.add_argument('-pmin', '--power_min', help='Stations minimal power acceptable for users.',
                         required=True, type=float)
-    parser.add_argument('-i', '--image', help='Show an image with optimal location of base stations in the area',
+    parser.add_argument('-i', '--image', help='Show an image with optimal location of base stations in the area.',
                         required=False, action="store_false")
+    parser.add_argument('-h', '--help', help='Show this help message and exit.', default=argparse.SUPPRESS,
+                        action='help')
 
     args = parser.parse_args()
     return args.width, args.length, args.power, args.power_min, args.image
@@ -50,4 +61,3 @@ def render_image(width: int, length: int, r_outer: int, r_inner: int,
         row_counter += 1
 
     stations_location_img.show()
-
