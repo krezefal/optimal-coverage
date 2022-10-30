@@ -20,7 +20,7 @@ Options:
                         Stations minimal power acceptable for users.
   -i FILENAME, --image FILENAME
                         Create an image with optimal location of base stations in the area 
-                        and save it under the provided name (with specified extension)
+                        and save it under the provided name (with specified extension).
   -h, --help            Show this help message and exit.
 ```
 
