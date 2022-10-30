@@ -4,7 +4,9 @@ by base stations with specified power.
 
 ### Usage
 
-`python3 coverage.py -w WIDTH -l LENGTH -p POWER -pmin POWER_MIN`
+```
+python3 coverage.py -w WIDTH -l LENGTH -p POWER -pmin POWER_MIN [-i FILENAME]
+```
 
 ```
 Options:
@@ -16,7 +18,8 @@ Options:
                         Stations power.
   -pmin POWER_MIN, --power_min POWER_MIN
                         Stations minimal power acceptable for users.
-  -i, --image           Show an image with optimal location of base stations in the area.
+  -i FILENAME, --image FILENAME
+                        Create an image with optimal location of base stations in the area and save it under the provided name (with specified extension)
   -h, --help            Show this help message and exit.
 ```
 
@@ -31,7 +34,7 @@ the end user becomes less than the specified minimum (P<sub>t</sub> <
 P<sub>min</sub>).
 
 <p align="center">
-    <img src="example-img/test_img.bmp" alt/>
+    <img src="example-img/readme_img.bmp" alt />
 </p>
 
 <p align="center">
