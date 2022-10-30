@@ -5,7 +5,7 @@ from utils import parse_args, render_image
 
 
 def main():
-    width, length, P, Pmin, image_flag = parse_args()
+    width, length, P, Pmin, image_path = parse_args()
 
     if width == 0 or length == 0:
         print('0 STATION(S) ARE NEEDED TO COVER THIS AREA')
@@ -60,8 +60,9 @@ def main():
     if row_num % 2 != 0:
         optimal_station_num += stations_in_odd_row
 
-    if image_flag is True:
-        render_image(width, length, r_outer, r_inner, stations_in_odd_row, stations_in_even_row, row_num)
+    if image_path is not None:
+        render_image(width, length, r_outer, r_inner,
+                     stations_in_odd_row, stations_in_even_row, row_num, image_path)
 
     print('-------------------------------------------------')
     print(f'{Fore.RED}{optimal_station_num}{Style.RESET_ALL} STATION(S) ARE NEEDED TO COVER THIS AREA')
