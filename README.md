@@ -4,6 +4,11 @@ by base stations with specified power.
 
 ### Usage
 
+The program is a CLI app written in Python 3.10, which calculates the minimum
+required number of base stations in a given area. Program also can generate an 
+image -- a schematic representation of the optimal base stations' location in 
+the area.
+
 ```
 python3 coverage.py -w WIDTH -l LENGTH -p POWER -pmin POWER_MIN [-i FILENAME]
 ```
